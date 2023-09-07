@@ -2,6 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Used from the project https://vercel.com/templates/next.js/image-gallery-starter */
 @supports (font: -apple-system-body) and (-webkit-appearance: none) {
   img[loading='lazy'] {
     clip-path: inset(0.6px);

@@ -1,11 +1,12 @@
+import { StaticImageData } from "next/image"
+
 /* eslint-disable no-unused-vars */
 export interface ImageProps {
   id: number
   height: string
   width: string
-  public_id: string
-  format: string
   blurDataUrl?: string
+  img?:StaticImageData
 }
 
 export interface SharedModalProps {

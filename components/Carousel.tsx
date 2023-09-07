@@ -1,32 +1,32 @@
-import Image from 'next/image'
-import { useRouter } from 'next/router'
-import useKeypress from 'react-use-keypress'
-import type { ImageProps } from '../utils/types'
-import { useLastViewedPhoto } from '../utils/useLastViewedPhoto'
-import SharedModal from './SharedModal'
+import Image from 'next/image';
+import { useRouter } from 'next/router';
+import useKeypress from 'react-use-keypress';
+import type { ImageProps } from '../utils/types';
+import { useLastViewedPhoto } from '../utils/useLastViewedPhoto';
+import SharedModal from './SharedModal';
 
 export default function Carousel({
   index,
   currentPhoto,
 }: {
-  index: number
-  currentPhoto: ImageProps
+  index: number;
+  currentPhoto: ImageProps;
 }) {
-  const router = useRouter()
-  const [, setLastViewedPhoto] = useLastViewedPhoto()
+  const router = useRouter();
+  const [, setLastViewedPhoto] = useLastViewedPhoto();
 
   function closeModal() {
-    setLastViewedPhoto(currentPhoto.id)
-    router.push('/', undefined, { shallow: true })
+    setLastViewedPhoto(currentPhoto.id);
+    router.push('/', undefined, { shallow: true });
   }
 
   function changePhotoId(newVal: number) {
-    return newVal
+    return newVal;
   }
 
   useKeypress('Escape', () => {
-    closeModal()
-  })
+    closeModal();
+  });
 
   return (
     <div className="fixed inset-0 flex items-center justify-center">
@@ -35,8 +35,8 @@ export default function Carousel({
         onClick={closeModal}
       >
         <Image
-          src={currentPhoto.blurDataUrl}
-          className="pointer-events-none h-full w-full"
+          src={currentPhoto.img}
+          className="pointer-events-none h-full w-full blur-lg brightness-50"
           alt="blurred background"
           fill
           priority={true}
@@ -50,5 +50,5 @@ export default function Carousel({
         navigation={false}
       />
     </div>
-  )
+  );
 }
